@@ -6,8 +6,20 @@
     <title>HTML Boilerplate</title>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <canvas id="myCanvas" width="1000" height="1000" style="border:1px solid #000;">  
-    <script src="script.js"></script>
+    <select id="selectAlgorithm">
+        <option value="dfs">DFS</option>
+        <option value="bfs">BFS</option>
+    </select>
+    <button id="generateMaze">Generate maze</button>
+
+    <canvas id="myCanvas" width="1200" height="600" style="border:5px solid #000;"> 
+
+    <script src="setup.js"></script>
+    <script src="cell.js"></script>
+    <script src="common functions.js"></script>
+    <script src="reset board.js"></script>
+    <script src="generateDFS.js"></script>
+    <script src="generateBFS.js"></script>
+    <script src="algorithm selection.js"></script>
 </body>
 </html>
