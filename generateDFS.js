@@ -1,37 +1,47 @@
-current = grid[0];
-stack.push(current);
-
 function generateMazeDFS() {
-    if (stack.length>0) {
-        c.clearRect(0, 0, width, height);
-        showgrid();
-        
-        if (forcestop == true){
-            return;
-        }
+    //reset grid
+    resetAllCells();
+    c.clearRect(0, 0, width, height);
+    showgrid();
+    stack = [];
+    q = [];
 
-        current.visited = true;
-        current.highlight();
+    current = grid[0];
+    stack.push(current);
 
-        var next = current.checkNeighbours();
+    function dfs(){
+        if (stack.length>0) {
+            c.clearRect(0, 0, width, height);
+            showgrid();
 
-        if (next) {
-            next.visited = true;
-            stack.push(next);
-            removeWall(current,next);
-            current = next;
-        }
-        else if (stack.length > 0){
-            current = stack.pop();
-            if (stack.length == 0){
-                current = undefined;
-                showgrid();
+            if (!current)
                 return;
-            }
-        }
+            current.visited = true;
+            current.highlight();
 
-        setTimeout(generateMazeDFS, 10); // Call the function recursively after milliseconds delay
+            var next = current.checkNeighbours();
+
+            if (next) {
+                next.visited = true;
+                stack.push(next);
+                removeWall(current,next);
+                current = next;
+            }
+            else if (stack.length > 0){
+                current = stack.pop();
+                if (stack.length == 0){
+                    current = undefined;
+                    showgrid();
+                    return;
+                }
+            }
+
+            console.log("dfs");
+
+            setTimeout(dfs, 10); // Call the function recursively after milliseconds delay
+        }
     }
+    dfs();
 }
 
 

@@ -4,23 +4,19 @@ const generate = document.getElementById('generateMaze');
 var selectedAlgo;
 generate.addEventListener('click', function() {
     selectedAlgo = algorithm.value;
-    fun(1);
-    forcestop = true;
+    fun();
+    //dfs();
+    //generateMazeDFS();
+    //generateMazeBFS();
 });
 
 
-function fun(count){
-    if (count == 0){
-        resetBoard();
-        forcestop = false;
+function fun(){
+    if (selectedAlgo === 'dfs') {
+        generateMazeDFS();
+    } else if (selectedAlgo === 'bfs') {
+        generateMazeBFS();
     }
-    else{
-        if (selectedAlgo === 'dfs') {
-            generateMazeDFS();
-        } else if (selectedAlgo === 'bfs') {
-            generateMazeBFS();
-        }
-        return;
-    }
-    setTimeout(fun(count - 1), 100);
+    return;
+    //setTimeout(fun(count - 1), 100);
 }

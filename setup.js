@@ -13,7 +13,6 @@ var cols = Math.floor(width/w);
 
 var grid = [];
 var current;
-var forcestop = false;
 
 var stack = [];
 var q = [];
